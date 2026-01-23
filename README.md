@@ -57,3 +57,23 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+how to open it:-
+bash command--
+step 1 - simple-ui
+step 2 - cd simple-ui/backend
+         python -m uvicorn main:app --reload
+
+(if result is this it means backend is ready  = Uvicorn running on http://127.0.0.1:8000
+ )
+
+step 3 - cd simple-ui
+         ng serve
+
+(if result is this = http://localhost:4200
+ it means frontend is ready)
+
+step 4 - open the browser using this = http://localhost:4200
+
+

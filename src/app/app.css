@@ -1,0 +1,41 @@
+.card {
+  width: 350px;
+  margin: 120px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+}
+
+button:hover {
+  background-color: #125aa0;
+}
+
+.output {
+  margin-top: 10px;
+  font-weight: bold;
+}
