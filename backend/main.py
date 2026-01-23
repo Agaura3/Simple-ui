@@ -10,6 +10,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.get("/")
+def root():
+    return {"message": "API is running"}
+
 
 @app.get("/check")
 def check(num1: int, num2: int):
