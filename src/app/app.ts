@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
+
 
 @Component({
   selector: 'app-root',
@@ -24,7 +27,8 @@ checkResult() {
 
   this.http
     .get<any>(
-      `http://127.0.0.1:8000/check?num1=${this.num1}&num2=${this.num2}`
+      `${environment.apiUrl}/check?num1=${this.num1}&num2=${this.num2}`
+
     )
     .subscribe(res => {
       if (res.status === 'greater') {
