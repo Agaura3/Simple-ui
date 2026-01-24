@@ -24,7 +24,7 @@ export class App {
         if (res.status === 'greater') {
           this.message = 'First number is greater than second number';
         } else if (res.status === 'less') {
-          this.message = 'First number is less than second number';
+          this.message = 'Second number is less than second number';
         } else {
           this.message = 'Both numbers are equal';
         }
