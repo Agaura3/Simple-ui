@@ -21,23 +21,18 @@ export class App {
   constructor(private http: HttpClient) {}
 
 checkResult() {
-  if (this.num1 === undefined || this.num2 === undefined) {
-    return;
-  }
-
-  this.http
-    .get<any>(
-      `${environment.apiUrl}/check?num1=${this.num1}&num2=${this.num2}`
-
-    )
-    .subscribe(res => {
-      if (res.status === 'greater') {
-        this.message = 'First number is greater than second number';
-      } else if (res.status === 'less') {
-        this.message = 'First number is less than second number';
-      } else {
-        this.message = 'Both numbers are equal';
-      }
-    });
+  this.http.get<any>(
+    `https://simple-ui-xu8r.onrender.com/check?num1=${this.num1}&num2=${this.num2}`
+  ).subscribe(res => {
+    if (res.status === 'greater') {
+      this.message = 'First number is greater than second number';
+    } else if (res.status === 'less') {
+      this.message = 'First number is less than second number';
+    } else {
+      this.message = 'Both numbers are equal';
+    }
+  });
 }
 }
+
+    
