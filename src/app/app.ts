@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
-import { environment } from '../environments/environment'; // ✅ ADD
+import { UserService } from './user.service';   // ✅ ADD THIS
 
 @Component({
   selector: 'app-root',
@@ -13,23 +12,23 @@ import { environment } from '../environments/environment'; // ✅ ADD
 })
 export class App {
 
-  // 🔹 Number comparison
+  // existing
   num1!: number;
   num2!: number;
   message = '';
 
-  // 🔹 Users list
+  // users list
   users: any[] = [];
 
   constructor(
-    private http: HttpClient,
-    private userService: UserService
+    private http: HttpClient,          // for /check (Render)
+    private userService: UserService   // for /users (local backend)
   ) {}
 
-  // ✅ FIXED: /check using SAME backend (environment)
+  // existing function (NO CHANGE)
   checkResult() {
     this.http.get<any>(
-      `${environment.apiUrl}/check?num1=${this.num1}&num2=${this.num2}`
+      `https://simple-ui-xu8r.onrender.com/check?num1=${this.num1}&num2=${this.num2}`
     ).subscribe({
       next: (res) => {
         if (res.status === 'greater') {
@@ -46,15 +45,11 @@ export class App {
     });
   }
 
-  // ✅ Users from PostgreSQL
+  // ✅ FIXED: now using UserService
   loadUsers() {
     this.userService.getUsers().subscribe({
-      next: (res) => {
-        this.users = res;
-      },
-      error: () => {
-        alert('Backend not running / Render sleeping');
-      }
+      next: (res) => this.users = res,
+      error: () => alert('Backend not running')
     });
   }
 }
