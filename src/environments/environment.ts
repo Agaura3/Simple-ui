@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://simple-ui-xu8.onrender.com'
+  apiUrl: 'http://127.0.0.1:8000'
 };

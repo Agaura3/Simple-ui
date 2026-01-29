@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';   // ✅ ADD THIS
+import { UserService } from './user.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,23 +13,21 @@ import { UserService } from './user.service';   // ✅ ADD THIS
 })
 export class App {
 
-  // existing
   num1!: number;
   num2!: number;
   message = '';
 
-  // users list
   users: any[] = [];
 
   constructor(
-    private http: HttpClient,          // for /check (Render)
-    private userService: UserService   // for /users (local backend)
+    private http: HttpClient,
+    private userService: UserService
   ) {}
 
-  // existing function (NO CHANGE)
+  // ✅ SAME backend as users
   checkResult() {
     this.http.get<any>(
-      `https://simple-ui-xu8r.onrender.com/check?num1=${this.num1}&num2=${this.num2}`
+      `${environment.apiUrl}/check?num1=${this.num1}&num2=${this.num2}`
     ).subscribe({
       next: (res) => {
         if (res.status === 'greater') {
@@ -40,12 +39,11 @@ export class App {
         }
       },
       error: () => {
-        this.message = 'Backend error / Render sleeping';
+        this.message = 'Backend sleeping, please retry';
       }
     });
   }
 
-  // ✅ FIXED: now using UserService
   loadUsers() {
     this.userService.getUsers().subscribe({
       next: (res) => this.users = res,
