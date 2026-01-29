@@ -1,3 +1,4 @@
+<!-- Number comparison (UNCHANGED) -->
 <div class="card">
   <h2>Number Comparison</h2>
 
@@ -18,4 +19,29 @@
   <div class="output" *ngIf="message">
     {{ message }}
   </div>
+</div>
+
+<hr />
+
+<!-- PostgreSQL Users -->
+<div class="card">
+  <h2>Users (PostgreSQL)</h2>
+
+  <button type="button" (click)="loadUsers()">Load Users</button>
+
+  <table *ngIf="users.length" border="1" cellpadding="8">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+    </tr>
+
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.age }}</td>
+    </tr>
+  </table>
 </div>
